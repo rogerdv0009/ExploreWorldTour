@@ -1,0 +1,114 @@
+<!-- Modal -->
+{% load static %}
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Crear Paquete Turístico <i class="fas fa-briefcase"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{% url 'Paquete_Crear' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                            <div class="form_locacion_turistica margin_btm">
+                                <div class="form-group">
+                                    <label for="">{{ form.locacion_turistica.label }}</label>
+                                    {{ form.locacion_turistica }}
+                                </div>
+                                <div class="boton_crear_locacion">
+                                    <button type="button" onclick="modal_locacion_creacion('{% url "Locacion_Crear" %}')">Crear Locación <i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                            <div class="form_estancia margin_btm">
+                                <div class="form-group">
+                                    <label for="">{{ form.estancia.label }}</label>
+                                    {{ form.estancia }}
+                                </div>
+                            </div>
+                            <div class="form_tiempo_estancia margin_btm">
+                                <div class="form-group">
+                                    <label for="">{{ form.tiempo_estancia.label }}</label>
+                                    {{ form.tiempo_estancia }}
+                                </div>
+                            </div>
+                            <div class="form_imagen_paquete margin_btm">
+                                <div class="form-group">
+                                    <label for="">{{ form.imagen_paquete.label }}</label>
+                                    {{ form.imagen_paquete }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                            <div class="form_precio margin_btm">
+                                <div class="form-group">
+                                    <label for="">{{ form.precio.label }}</label>
+                                    {{ form.precio }}
+                                </div>
+                            </div>
+                            <div class="form_calificacion margin_btm">
+                                <div class="form-group">
+                                    <label for="">{{ form.calificacion.label }}</label>
+                                    {{ form.calificacion }}
+                                </div>
+                            </div>
+                            <div class="form_fecha_entrada margin_btm">
+                                <div class="form-group">
+                                    <label for="">{{ form.fecha_entrada.label }}</label>
+                                    {{ form.fecha_entrada }}
+                                </div>
+                            </div>
+                            <div class="form_fecha_salida margin_btm">
+                                <div class="form-group">
+                                    <label for="">{{ form.fecha_salida.label }}</label>
+                                    {{ form.fecha_salida }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                            <div class="form_actividades">
+                                <div class="form-group">
+                                    <label for="">{{ form.actividades.label }}</label>
+                                    {{ form.actividades }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-lg" type="button" data-bs-dismiss="modal">Cancelar <i class="fas fa-ban"></i></button>
+                    <button class="submit_modal" type="submit">Crear Paquete Turístico <i class="fas fa-save"></i></button>
+                </div>
+            </form>   
+        </div>
+    </div>
+    <div class="modal fade" id="crear_locacion" role="dialog">
+    
+    </div>
+    <script>
+        function modal_locacion_creacion(url){
+            $('#crear_locacion').load(url, function(){
+                $('#crear_locacion').modal('show');
+            });
+        }
+    </script>
+    <script src="{% static 'library/sweetalert2/sweetalert2.all.min.js' %}"></script>
+    <script type="application/javascript">
+        {% if form.errors %}
+            let errors = '';
+            {% for field in form %}
+                {% for error in field.errors %}
+                    errors += '{{ error }}\n';
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                errors += '{{ error }}\n';
+            {% endfor %}
+            Swal.fire({
+                title: 'Error!',
+                text: errors,
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+              });
+        {% endif %}
+    </script>

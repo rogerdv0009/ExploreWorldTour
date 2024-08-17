@@ -1,0 +1,313 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block titulo %}ExploreWorld Tour{% endblock titulo %}
+{% block contenido %}
+
+<main>
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active change_hgt" data-bs-interval="5000">
+                <img src="{% static "img/first_slide.jpg" %}" alt="...">
+                <div class="fondo_carousel">
+                    <div class="titulo_carousel">
+                        <p>Bienvenido a ExploreWorld Tour</p>
+                    </div>
+                    <div class="descripcion_carousel">
+                        <p>
+                            Sitio web disponible para toda la familia con el fin de garantizar 
+                            una experiencia inolvidable a través de nuestros servicios.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item change_hgt" data-bs-interval="5000">
+                <img src="{% static "img/third_slide.jpg" %}" alt="...">
+                <div class="fondo_carousel">
+                    <div class="titulo_carousel">
+                        <p>Paquetes Turísticos! <i class="fas fa-bolt"></i></p>
+                    </div>
+                    <div class="descripcion_carousel">
+                        <p>
+                            Los mejores sitios turísticos para el disfrute de toda la familia. 
+                            ¡Únase a nosotros y viva la experiencia!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item change_hgt" data-bs-interval="5000">
+                <img src="{% static "img/airplane2.jpg" %}" alt="...">
+                <div class="fondo_carousel">
+                    <div class="titulo_carousel">
+                        <p>Vuelos a su alcance <i class="fas fa-plane"></i></p>
+                    </div>
+                    <div class="descripcion_carousel">
+                        <p>
+                            Rapidez y comodidad a la hora de reservar este servicio. 
+                            Todos los detalles y por supuesto la oportunidad de conocer el mundo
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</main>
+<section class="seccion2">
+    <div class="completo_seccion2">
+        <div class="container">
+            <div class="paquetes_informacion">
+                <div class="container">
+                    <div class="titulo_seccion2">
+                        <p>Paquetes Turísticos</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="titulo_ultimos_paquetes">
+                                <p>Último Paquete Turístico</p>
+                            </div>
+                            <div class="completo_card_paquete_inf">
+                                {% if ultimo_paquete %}
+                                    <div class="completo_card_paquete_inf_img">
+                                        <img src="/media/{{ ultimo_paquete.imagen_paquete }}" alt="">
+                                    </div>
+                                    <div class="descripcion_card_paquete_inf">
+                                        <div class="titulo_card_paquete_i">
+                                            <p><i class="fas fa-bolt"></i> {{ ultimo_paquete.locacion_turistica }}</p>
+                                        </div>
+                                        <div class="descripcion_card_paquete_i">
+                                            <p>{{ ultimo_paquete.actividades }}</p>
+                                        </div>
+                                        <div class="boton_card_paquete_i">
+                                            <a href="{% url "Paquete_Detalle" ultimo_paquete.id %}">Reservar <i class="fas fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                        <div class="titulo_card_paquete_i">
+                                            <p>No existe actualmente ningún Paquete Turístico</p>
+                                        </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="titulo_ultimos_paquetes">
+                                <p>Datos Generales</p>
+                            </div>
+                            <div class="datos_generales">
+                                <div class="cantidad_paquetes">
+                                    <p>{{ cant_paquete }}</p>
+                                </div>
+                                <div class="descripcion_card_paquete_i">
+                                    <p>Paquetes Turísticos existen actualmente <i class="fas fa-bolt"></i></p>
+                                </div>
+                            </div>
+                            <div class="datos_generales">
+                                <div class="cantidad_paquetes">
+                                    <p>{{ calificacion_paquete }}</p>
+                                </div>
+                                <div class="descripcion_card_paquete_i">
+                                    <p>Paquetes Turísticos con buena calificación <i class="fas fa-star"></i></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="link_completo_row">
+                                        <a href="{% url "Paquete_Listado" %}">Ver más</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="imagen_coco_playa">
+        <img src="{% static "img/playa_sin_fondo.png" %}" alt="...">
+    </div>
+</section>
+<section class="seccion1">
+    <div class="imagen_background">
+        <img src="{% static 'img/estrellas.png' %}" alt="">
+    </div>
+    <div class="imagen_sinfondo">
+        <img src="{% static 'img/ciudad_sin_fondo.png' %}" alt="">
+    </div>
+    <div class="completo_seccion1">
+        <div class="container">
+            <div class="titulo_seccion1">
+                <p>Encuentra tu próximo destino</p>
+            </div>
+            <div class="descripcion_seccion1">
+                <p>
+                    Ofrecemos disponibilidad y variabilidad de ofertas turísticas en todo el mundo. 
+                    Gracias a la aprobación de nuestros suscriptores logramos tener al menos 1 usuario.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="seccion2">
+    <div class="carretera_avion">
+        <i class="fas fa-road"></i>
+    </div>
+    <div class="imagen_vuelo_sinfondo">
+        <img src="{% static "img/avion_sin_fondo.png" %}" alt="...">
+    </div>
+    <div class="pegado_seccion3">
+        <div class="container">
+            <div class="completo_seccion3">
+                <div class="container">
+                    <div class="titulo_seccion2">
+                        <p>Vuelos Turísticos</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="titulo_ultimos_paquetes">
+                                <p>Datos Generales</p>
+                            </div>
+                            <div class="datos_generales">
+                                <div class="cantidad_paquetes">
+                                    <p>{{ cant_vuelo }}</p>
+                                </div>
+                                <div class="descripcion_card_paquete_i">
+                                    <p>Vuelos turísticos existen actualmente <i class="fas fa-plane"></i></p>
+                                </div>
+                            </div>
+                            <div class="link_completo_row">
+                                <a href="{% url "Vuelo_Listado" %}">Ver más</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="titulo_ultimos_paquetes">
+                                <p>Último Vuelo Planificado</p>
+                            </div>
+                            <div class="completo_card_paquete_inf">
+                                {% if ultimo_vuelo %}
+                                    <div class="completo_card_paquete_inf_img">
+                                        <img src="/media/{{ ultimo_vuelo.imagen_vuelo }}" alt="">
+                                    </div>
+                                    <div class="descripcion_card_paquete_inf">
+                                        <div class="titulo_card_paquete_i">
+                                            <p><i class="fas fa-bolt"></i> {{ ultimo_vuelo.destino }}</p>
+                                        </div>
+                                        <div class="descripcion_card_paquete_i">
+                                            <p>{{ ultimo_vuelo.fecha_salida }}</p>
+                                        </div>
+                                        <div class="boton_card_paquete_i">
+                                            <a href="{% url "Vuelo_Detalle" ultimo_vuelo.id %}">Reservar <i class="fas fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                        <div class="titulo_card_paquete_i">
+                                            <p>No existe actualmente ningún Vuelo</p>
+                                        </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section_4">
+    <div class="imagen_background">
+        <img src="{% static 'img/estrellas.png' %}" alt="">
+    </div>
+    <div class="tituto_section4">
+        <p>Equipo Investigativo y Desarrollador</p>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="completo_section4">
+                    <div class="imagen_section4 color_pink_first">
+                        <img src="{% static "img/sheila.jfif" %}" alt="">
+                    </div>
+                    <div class="links_section4">
+                        <div class="dentro_links">
+                            <a class="border_left" title="Facebook" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                            <a title="Twitter" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                            <a class="border_right" title="Linked-in" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="nombres_section4">
+                        <p>Cheyla Núñez Gómez</p>
+                    </div>
+                    <div class="puesto_section4">
+                        <p>Desarrolladora</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="completo_section4">
+                    <div class="imagen_section4 color_pink">
+                        <img src="{% static "img/yanara.jfif" %}" alt="">
+                    </div>
+                    <div class="links_section4">
+                        <div class="dentro_links">
+                            <a class="border_left" title="Facebook" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                            <a title="Twitter" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                            <a class="border_right" title="Linked-in" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="nombres_section4">
+                        <p>Yanara Sosa Tejeda</p>
+                    </div>
+                    <div class="puesto_section4">
+                        <p>Desarrolladora</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="completo_section4">
+                    <div class="imagen_section4 color_violet">
+                        <img src="{% static "img/masiel.jpg" %}" alt="">
+                    </div>
+                    <div class="links_section4">
+                        <div class="dentro_links">
+                            <a class="border_left" title="Facebook" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                            <a title="Twitter" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                            <a class="border_right" title="Linked-in" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="nombres_section4">
+                        <p>Massiel Ramos Laffitta</p>
+                    </div>
+                    <div class="puesto_section4">
+                        <p>Investigadora</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="completo_section4">
+                    <div class="imagen_section4 color_blue">
+                        <img src="{% static "img/lili.jpg" %}" alt="">
+                    </div>
+                    <div class="links_section4">
+                        <div class="dentro_links">
+                            <a class="border_left" title="Facebook" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                            <a title="Twitter" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                            <a class="border_right" title="Linked-in" href="http://#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                        </div>
+                    <div class="nombres_section4">
+                        <p>Liliana Sanchez Santos</p>
+                    </div>
+                    <div class="puesto_section4">
+                        <p>Investigadora</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock contenido %}

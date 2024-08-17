@@ -1,0 +1,103 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block titulo %}Paquetes Turísticos{% endblock titulo %}
+{% block contenido %}
+
+<section class="section_paquete">
+    <div class="paquete_all">
+        <div class="container">
+            {% if request.user.rol == "Administrador" %}
+                <div class="contenedor_creacion">
+                    <div class="contenedor_boton_crear">
+                        <button type="button" onclick="modal_creacion('{% url "Paquete_Crear" %}')">Crear Paquete Turístico <i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            {% elif request.user.rol == "Gestor de Venta" %}
+                <div class="contenedor_creacion">
+                    <div class="contenedor_boton_crear">
+                        <button type="button" onclick="modal_creacion('{% url "Paquete_Crear" %}')">Crear Paquete Turístico <i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            {% endif %}
+            
+            <div class="row justify-content-center">
+                {% if object_list %}
+                    {% for paquete in object_list %}
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                            <div class="card_paquete">
+                                <div class="img_paquete">
+                                    <img src="/media/{{ paquete.imagen_paquete }}" alt="">
+                                    <div class="calificacion_paquete">
+                                        {% comment %} {% if paquete.calificacion %}
+                                            {% for estrella in paquete.calificacion %}
+                                                <i class="fas fa-star"></i>
+                                            {% endfor %}
+                                        {% endif %}  {% endcomment %}
+                                    </div>
+                                    <div class="mostrar_paquete">
+                                        <a href="{% url 'Paquete_Detalle' paquete.id %}"><i class="fas fa-eye"></i></a>
+                                    </div>
+                                </div>
+                                <div class="descripcion_paquete">
+                                    <div class="locacion_paquete">
+                                        <p><i class="fas fa-bolt"></i> {{ paquete.locacion_turistica }}</p>
+                                    </div>
+                                    <div class="tiempo_estancia_paquete">
+                                        <p><strong>{{ paquete.tiempo_estancia }}</strong> días | <strong>{{ paquete.NochesEstancias }}</strong> noches</p>
+                                    </div>
+                                    <div class="precio_paquete">
+                                        <p>$ {{ paquete.precio }}</p>
+                                    </div>
+                                    {% if request.user.rol == "Administrador" %}
+                                        <div class="acciones_paquete">
+                                            <button type="button" class="editar" onclick="modal_edicion('{% url "Paquete_Editar" paquete.id %}')">
+                                                <i class="fas fa-pencil"></i>
+                                            </button>
+                                            <button class="eliminar" onclick="modal_eliminacion('{% url "Paquete_Eliminar" paquete.id %}')"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    {% else %}
+                                        <div class="reservar_paquete">
+                                            <a href="{% url 'Paquete_Detalle' paquete.id %}">Reservar <i class="fas fa-calendar"></i></a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                        <h1>No existen objetos actuales o no coinciden las características de Búsqueda</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Div para cargar las url de los modales editar , crear y eliminar-->
+<div class="modal fade" id="crear" role="dialog">
+    
+</div>
+<div class="modal fade" id="editar" role="dialog">
+    
+</div>
+<div class="modal fade" id="eliminar" role="dialog">
+    
+</div>
+{% endblock contenido %}
+{% block javascript %}
+    <script>
+        function modal_creacion(url){
+            $('#crear').load(url, function(){
+                $('#crear').modal('show');
+            });
+        }
+        function modal_edicion(url){
+            $('#editar').load(url, function(){
+                $('#editar').modal('show');
+            });
+        }
+        function modal_eliminacion(url){
+            $('#eliminar').load(url, function(){
+                $('#eliminar').modal('show');
+            });
+        }
+    </script>
+{% endblock javascript %}

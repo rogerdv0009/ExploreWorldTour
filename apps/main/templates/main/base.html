@@ -1,0 +1,55 @@
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}ExploreWorld Tour{% endblock titulo %}</title>
+    <link rel="shortcut icon" href="{% static "img/logo.png" %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'library/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'library/fontawesome/css/all.min.css' %}">
+    {% block estilos %}{% endblock estilos %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="background-image: url('{% static "img/diagmonds.png" %}')">
+    <header>
+        <nav class="barra_navegacion">
+            <a href="#">
+                <img src="{% static 'img/logo.png' %}" alt="">
+            </a>
+            <ul class="listado_links">
+                <a href="{% url "Home" %}"><i class="fas fa-home"></i> Home</a>
+                <a href="{% url 'Paquete_Listado' %}"><i class="fas fa-briefcase"></i> Paquetes Turísticos</a>
+                <a href="{% url 'Vuelo_Listado' %}"><i class="fas fa-plane"></i> Vuelos</a>
+                {% if request.user.rol == 'Administrador' %}
+                    <a href="{% url 'Reserva_Listado' %}"><i class="fas fa-credit-card"></i> Reservas</a>
+                {% elif request.user.rol == 'Gestor de Venta' %}
+                    <a href="{% url 'Reserva_Listado' %}"><i class="fas fa-credit-card"></i> Reservas</a>
+                {% endif %}
+                <a href="#"><i class="fas fa-globe"></i> Comunidad</a>
+                <a href="#"><i class="fas fa-search"></i></a>
+            </ul>
+            <div class="avatar">
+                {% if request.user.imagen_usuario %}
+                    <img src="/media/{{ request.user.imagen_usuario }}">
+                    {% else %}
+                        <img src="{% static 'img/usuario.png' %}">
+                {% endif %}                                                
+            </div>
+            {% if request.user.username %}
+                <div class="logout">
+                    <a href="{% url 'Logout' %}"><i class="fas fa-times"></i> Sesion <i class="fas fa-sign-out"></i></a>
+                </div>
+            {% else %}
+                <div class="logout">
+                    <a href="{% url 'Login' %}">Autenticarte <i class="fas fa-sign-out"></i></a>
+                </div>
+            {% endif %}
+        </nav>
+    </header>
+    {% block contenido %}{% endblock contenido %}
+    <script src="{% static 'library/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'library/bootstrap/js/bootstrap.bundle.js'%}"></script>
+    
+    {% block javascript %}{% endblock javascript %}
+</body>
+</html>

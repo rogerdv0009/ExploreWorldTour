@@ -1,0 +1,20 @@
+{% load static %}
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmación de Eliminación del Paquete Turístico con id: {{ object.id }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{% url 'Paquete_Eliminar' object.id %}" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <p><strong> Estás seguro/a de eliminar el {{object}} </strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Cancelar <i class="fas fa-times"></i></button>
+                    <button class="btn btn-danger btn-lg" type="submit">Eliminar <i class="fas fa-trash"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>

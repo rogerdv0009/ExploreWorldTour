@@ -1,0 +1,111 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block titulo %}Vuelo {{object.id}}{% endblock titulo %}
+{% block contenido %}
+
+    <section class="section_paquete_detalle">
+        <img src="/media/{{ object.imagen_vuelo }}" alt="">
+        <div class="all_detalle">
+            <div class="container">
+                <div class="caja_flex">
+                    <div class="titulo_detalle_vuelo">
+                        <div class="titulo_detalle">
+                            <a href="{% url 'Vuelo_Listado' %}"><i class="fas fa-angle-left"></i></a>
+                            <p>{{object.destino}}</p>
+                        </div>
+                        <div class="precio_detalle">
+                            <p><strong>$ {{object.precio}}</strong></p>
+                        </div>
+                    </div>
+                    <div class="descripcion_detalle">
+                        <div class="hotel_detalle">
+                            <p><strong>Aereolínea:</strong> {{object.aerolinea}}</p>
+                        </div>
+                        <div class="actividades_detalle">
+                            <p><strong>Fecha de Salida:</strong></p>
+                            <p>{{object.fecha_salida}}</p>
+                        </div>
+                        <div class="reservar_detalle">
+                            <form id="formulario_reserva_vuelo" action="{% url 'Vuelo_Reserva' %}" method="post">
+                                {% csrf_token %}
+                                <div>
+                                    <input type="hidden" id="input_user_vuelo" name="input_user_vuelo" value="{{ request.user.pk }}">
+                                </div>
+                                <div>
+                                    <input type="hidden" id="input_vuelo" name="input_vuelo" value="{{ object.id }}">
+                                </div>
+                                <div class="submit_reserva">
+                                    <button id="boton_reserva_vuelo" type="submit">Reservar <i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </section>
+
+{% endblock contenido %}
+
+{% block javascript %}
+<script type="application/javascript">
+    {% if reservas %}
+        let encontrarR = false;
+        {% for reserva in reservas %}
+            {% if reserva.user.pk == request.user.pk %}
+                {% if reserva.vuelo.id == object.id %}
+                    encontrarR = true;
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        if (encontrarR == true) {
+            $("#boton_reserva_vuelo").click(function(event){
+                event.preventDefault();
+                let texto = "El usuario ya ha realizado anteriormente una reserva del Vuelo seleccionado";
+                Swal.fire({
+                    position: "top-end",
+                    icon: 'error',
+                    title: "Reserva Cancelada!",
+                    text: texto,
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            });
+        }
+        else{
+            $("#boton_reserva_vuelo").click(function(event){
+                event.preventDefault();
+                let texto = "El usuario acaba de realizar una reserva del Vuelo seleccionado";
+                Swal.fire({
+                    position: "top-end",
+                    icon: 'success',
+                    title: "Reserva Realizada!",
+                    text: texto,
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+                setTimeout(function() {
+                    $('#formulario_reserva_vuelo').submit(); // Envía el formulario después de 2.5 segundos
+                }, 2500);
+            });
+        }
+    {% else %}
+        $("#boton_reserva_vuelo").click(function(event){
+            event.preventDefault();
+            let texto = "El usuario acaba de realizar una reserva del Vuelo seleccionado";
+            Swal.fire({
+                position: "top-end",
+                icon: 'success',
+                title: "Reserva Realizada!",
+                text: texto,
+                showConfirmButton: false,
+                timer: 2500
+            });
+            setTimeout(function() {
+                $('#formulario_reserva_vuelo').submit(); // Envía el formulario después de 2.5 segundos
+            }, 2500);
+        });
+    {% endif %}
+</script>
+<script src="{% static 'library/sweetalert2/cdnjs/sweetalert2.all.min.js' %}"></script>
+{% endblock javascript %}

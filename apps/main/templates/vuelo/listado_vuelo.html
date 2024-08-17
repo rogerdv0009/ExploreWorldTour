@@ -1,0 +1,110 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block titulo %}Vuelos{% endblock titulo %}
+{% block contenido %}
+
+<section class="section_paquete">
+    <div class="paquete_all">
+        <div class="container">
+            {% if request.user.rol == "Administrador" %}
+                <div class="contenedor_creacion">
+                    <div class="contenedor_boton_crear">
+                        <button type="button" onclick="modal_creacion('{% url "Vuelo_Crear" %}')">Crear Vuelo <i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            {% elif request.user.rol == "Gestor de Venta" %}
+                <div class="contenedor_creacion">
+                    <div class="contenedor_boton_crear">
+                        <button type="button" onclick="modal_creacion('{% url "Vuelo_Crear" %}')">Crear Vuelo <i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            {% endif %}
+            
+            <div class="row justify-content-center">
+                {% if object_list %}
+                    {% for vuelo in object_list %}
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                            <div class="card_paquete">
+                                <div class="img_paquete">
+                                    <img src="/media/{{ vuelo.imagen_vuelo }}" alt="">
+                                    <div class="mostrar_paquete">
+                                        <a href="{% url 'Vuelo_Detalle' vuelo.id %}"><i class="fas fa-eye"></i></a>
+                                    </div>
+                                </div>
+                                <div class="descripcion_paquete">
+                                    <div class="locacion_paquete">
+                                        <p><i class="fas fa-plane"></i> {{ vuelo.destino }}</p>
+                                    </div>
+                                    <div class="tiempo_estancia_paquete">
+                                        <p>{{ vuelo.fecha_salida }}</p>
+                                    </div>
+                                    <div class="tiempo_estancia_paquete">
+                                        <p>{{ vuelo.aerolinea }}</p>
+                                    </div>
+                                    <div class="precio_paquete">
+                                        <p>$ {{ vuelo.precio }}</p>
+                                    </div>
+                                    {% if request.user.rol == "Administrador" %}
+                                        <div class="acciones_paquete">
+                                            <button type="button" class="editar" onclick="modal_edicion('{% url "Vuelo_Editar" vuelo.id %}')">
+                                                <i class="fas fa-pencil"></i>
+                                            </button>
+                                            <button class="eliminar" onclick="modal_eliminacion('{% url "Vuelo_Eliminar" vuelo.id %}')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    {% elif request.user.rol == "Gestor de Venta" %}
+                                        <div class="acciones_paquete">
+                                            <button type="button" class="editar" onclick="modal_edicion('{% url "Vuelo_Editar" vuelo.id %}')">
+                                                <i class="fas fa-pencil"></i>
+                                            </button>
+                                            <button class="eliminar" onclick="modal_eliminacion('{% url "Vuelo_Eliminar" vuelo.id %}')">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    {% else %}
+                                        <div class="reservar_paquete">
+                                            <a href="{% url "Paquete_Detalle" vuelo.id %}">Reservar <i class="fas fa-calendar"></i></a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                        <h1>No existen objetos actuales o no coinciden las características de Búsqueda</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Div para cargar las url de los modales editar , crear y eliminar-->
+<div class="modal fade" id="crear_vuelo" role="dialog">
+    
+</div>
+<div class="modal fade" id="editar_vuelo" role="dialog">
+    
+</div>
+<div class="modal fade" id="eliminar_vuelo" role="dialog">
+    
+</div>
+{% endblock contenido %}
+{% block javascript %}
+    <script>
+        function modal_creacion(url){
+            $('#crear_vuelo').load(url, function(){
+                $('#crear_vuelo').modal('show');
+            });
+        }
+        function modal_edicion(url){
+            $('#editar_vuelo').load(url, function(){
+                $('#editar_vuelo').modal('show');
+            });
+        }
+        function modal_eliminacion(url){
+            $('#eliminar_vuelo').load(url, function(){
+                $('#eliminar_vuelo').modal('show');
+            });
+        }
+    </script>
+{% endblock javascript %}

@@ -1,0 +1,64 @@
+<!-- Modal -->
+{% load static %}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Crear Locación Turística <i class="fas fa-thumb-tack"></i>_<i class="fas fa-globe"></i></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{% url 'Locacion_Crear'%}" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form_nombre_locacion">
+                        <div class="form-group">
+                            <label for="">{{ form.nombre_locacion.label }}</label>
+                            {{ form.nombre_locacion }}
+                        </div>
+                    </div>
+                    <div class="form_pais">
+                        <div class="form-group">
+                            <label for="">{{ form.pais.label }}</label>
+                            {{ form.pais }}
+                        </div>
+                        <div class="boton_crear_locacion">
+                            <button type="button" onclick="modal_pais_creacion('{% url "Pais_Crear" %}')">Crear País <i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger btn-lg" type="button" data-bs-dismiss="modal">Cancelar <i class="fas fa-ban"></i></button>
+                    <button class="submit_modal" type="submit">Crear Locación Turística <i class="fas fa-save"></i></button>
+                </div>
+            </form>   
+        </div>
+    </div>
+    <div class="modal fade" id="crear_pais" role="dialog">
+    
+    </div>
+    <script>
+        function modal_pais_creacion(url){
+            $('#crear_pais').load(url, function(){
+                $('#crear_pais').modal('show');
+            });
+        }
+    </script>
+    <script src="{% static 'library/sweetalert2/sweetalert2.all.min.js' %}"></script>
+    <script type="application/javascript">
+        {% if form.errors %}
+            let errors = '';
+            {% for field in form %}
+                {% for error in field.errors %}
+                    errors += '{{ error }}\n';
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                errors += '{{ error }}\n';
+            {% endfor %}
+            Swal.fire({
+                title: 'Error!',
+                text: errors,
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+              });
+        {% endif %}
+    </script>

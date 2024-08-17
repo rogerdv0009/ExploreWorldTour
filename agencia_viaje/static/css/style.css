@@ -1,0 +1,1134 @@
+:root{
+    --color_azul: rgb(4, 191, 238);
+    --letra_general:Georgia, 'Times New Roman', Times, serif;
+}
+body{
+    font-family: var(--letra_general);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: var(--color_azul);
+}
+.body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contenedor_login{
+    background-color: white;
+    width: 500px;
+    border-radius: 10px;
+    margin: 0 20px;
+    transition: all .3s ease;
+}
+.contenedor_login:hover{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.281);
+}
+.logo_img_login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.logo_img_login img{
+    max-width: 100%;
+    height: auto;
+}
+.formulario_login{
+    padding: 10px;
+}
+.username_password_login{
+    display: flex;
+    flex-direction: column;
+}
+.username_password_login label{
+    font-size: 24px;
+    font-weight: 600;
+}
+.username_password_login input{
+    padding: 10px;
+    background-color: white;
+    border: 2px solid var(--color_azul) !important;
+    border-radius: 10px;
+}
+.formulario{
+    margin: 0 30px;
+}
+.submit_login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0 ;
+}
+.submit_login button{
+    text-decoration: none;
+    padding: 10px 60px;
+    background-color: var(--color_azul);
+    color: white;
+    border-radius: 15px;
+    transition: all .3s ease;
+    border: none;
+}
+.submit_login button:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.301);
+}
+/*Barra de Navegacion*/
+.barra_navegacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    background-color: white
+}
+.listado_links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+.listado_links a{
+    margin: 0 5px;
+    text-decoration: none;
+    color: var(--color_azul);
+}
+/*
+.buscar_form button{
+    display: inline-block;
+    height: 100%;
+    background-color: transparent;
+    color: var(--color_azul);
+    border: none;
+    padding-right: 10px;
+}
+.buscar_form input{
+    border: 1px solid rgba(128, 128, 128, 0.397);
+    padding: 5px;
+    border-radius: 5px;
+    width: 2px;
+    transition: all .3s ease;
+}
+.buscar_form:hover input{
+    width: 150px;
+}
+*/
+.avatar{
+    height: 100px;
+    width: 100px;
+    margin-top: 5px;
+}
+.avatar img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.logout{
+    color: var(--color_azul);
+    padding-top: 5px;
+}
+.logout a{
+    text-decoration: none;
+    color: var(--color_azul);
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Pagina Principal*/
+.change_hgt{
+    max-height: 200px;
+    position: relative;
+}
+.change_hgt img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.fondo_carousel{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.253);
+    color: white;
+}
+.titulo_carousel{
+    margin: 10px 10px 0;
+    border-bottom: 3px solid white;
+}
+.titulo_carousel p{
+    font-size: 18px;
+    font-weight: 600;
+}
+.descripcion_carousel{
+    margin: 10px 10px 0;
+}
+/*Seccion 1*/
+.completo_seccion1{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.seccion1{
+    background-color: rgba(119, 119, 119, 0.849);
+    padding: 60px 0 100px;
+    position: relative;
+    color: white;
+    overflow: hidden;
+}
+.imagen_background{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.imagen_background img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.imagen_sinfondo{
+    position: absolute;
+    top: 250px;
+    left: 0;
+    transition: all .5s ease;
+}
+.imagen_sinfondo:hover{
+    filter: drop-shadow(0 0 10px white);
+}
+.imagen_sinfondo img{
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+}
+.titulo_seccion1 p{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+.descripcion_seccion1{
+    text-align: center;
+}
+/*/////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Seccion 2*/
+.seccion2{
+    position: relative;
+    padding: 60px 0 120px;
+    background-color: rgba(245, 245, 245, 0.767);
+    border-bottom: 25px solid rgba(7, 2, 36, 0.767);
+    border-top: 25px solid rgba(7, 2, 36, 0.767);
+}
+.imagen_coco_playa{
+    width: 200px;
+    position: absolute;
+    top: 87%;
+    left: 35%;
+    transition: all .5s ease;
+}
+.imagen_coco_playa:hover{
+    filter: drop-shadow(3px -3px 2px var(--color_azul));
+}
+.imagen_coco_playa img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.completo_seccion2{
+    position: relative;
+}
+.titulo_seccion2 p{
+    font-size: 20px;
+    font-weight: 600;
+}
+.completo_card_paquete_inf{
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.301);
+    border-radius: 25px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.completo_card_paquete_inf_img img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    transition: all .3s ease;
+}
+.completo_card_paquete_inf_img{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    overflow: hidden;
+}
+.completo_card_paquete_inf_img img:hover{
+    transform: scale(1.1);
+}
+.titulo_ultimos_paquetes{
+    border-bottom: 3px solid var(--color_azul);
+    margin-bottom: 10px;
+}
+.descripcion_card_paquete_inf{
+    background-color: white;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+/*
+.descripcion_card_paquete_inf{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}*/
+.titulo_card_paquete_i{
+    padding: 10px 10px 0;
+}
+.titulo_card_paquete_i p{
+    text-align: left;
+    font-weight: 600;
+}
+.titulo_card_paquete_i p i{
+    color: yellow;
+}
+.descripcion_card_paquete_i{
+    margin: 10px 10px 0;
+}
+.boton_card_paquete_i{
+    padding: 30px 10px;
+}
+.boton_card_paquete_i a{
+    text-decoration: none;
+    padding: 20px 35px;
+    background-color: var(--color_azul);
+    color: white;
+    border-radius: 25px;
+    transition: all .3s ease;
+}
+.datos_generales{
+    border: 1px solid var(--color_azul);
+    text-align: center;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.397);
+    background-color: white;
+}
+.titulo_ultimos_paquetes p{
+    font-weight: 600;
+}
+.cantidad_paquetes p{
+    font-size: 20px;
+    font-weight: 700;
+}
+.carretera_avion{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    left: 45%;
+}
+.carretera_avion i{
+    color: white;
+    font-size: 24px;
+}
+.imagen_vuelo_sinfondo{
+    width: 200px;
+    position: absolute;
+    top: 91%;
+    left: 15%;
+}
+.imagen_vuelo_sinfondo img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: all 1.5s ease;
+}
+.imagen_vuelo_sinfondo img:hover{
+    filter: drop-shadow(3px 3px 10px var(--color_azul));
+    transform: translate(-15px, -15px)
+                rotate(15deg)
+                scale(1.1);
+}
+.link_completo_row{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+.link_completo_row a{
+    text-decoration: none;
+    color: white;
+    background-color: var(--color_azul);
+    padding: 15px 35%;
+    font-size: 20px;
+    border-radius: 25px;
+}
+/*////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Seccion 4*/
+/* cuarta seccion*/
+.section_4{
+    padding: 15vh 0;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.849);
+    overflow: hidden;
+}
+.tituto_section4{
+    position: relative;
+}
+.tituto_section4 p{
+    text-align: center;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 2;
+    color: white;
+}
+.completo_section4{
+    position: relative;
+}
+.imagen_section4{
+    height: 94vw;
+    width: 94vw;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+    border: solid 10px white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.39);
+    transition: all .5s ease;
+    display: flex;
+    justify-content: center;
+}
+.imagen_section4 img{
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.color_pink_first{
+    background-color: var(--color_azul);
+}
+.color_pink{
+    background-color: var(--color_azul);
+}
+.color_violet{
+    background-color: var(--color_azul);
+}
+.color_blue{
+    background-color: var(--color_azul);
+}
+.links_section4{
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+    position: relative;
+}
+.dentro_links{
+    padding: 10px 30px;
+    border-radius: 40px;
+    background-color: rgb(0, 38, 255);
+    opacity: 0;
+    transition: all .5s ease;
+}
+.completo_section4:hover .links_section4 .dentro_links{
+    position: relative;
+    z-index: 1;
+    left: 0;
+    opacity: 1;
+}
+.completo_section4:hover .imagen_section4{
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.801);
+}
+.dentro_links a{
+    display: inline-block;
+    color: white;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+}
+.nombres_section4{
+    margin-top: 20px;
+    transition: all .5s ease;
+}
+.completo_section4:hover .nombres_section4{
+    margin-top: 15px;
+}
+.nombres_section4 p{
+    font-size: 28px;
+    color: rgb(0, 38, 255);
+    font-weight: 600;
+    text-align: center;
+}
+.puesto_section4 p{
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+/*......................................................................................................*/
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Seccion de paquetes Turisticos*/
+.section_paquete{
+    background-color: rgba(255, 255, 255, 0.301);
+    min-height: 100%;
+}
+.paquete_all{
+    padding: 60px 0;
+}
+.contenedor_creacion{
+    padding: 20px 0 40px;
+}
+.contenedor_boton_crear button{
+    text-decoration: none;
+    padding: 20px 35px;
+    background-color: var(--color_azul);
+    color: white;
+    border-radius: 25px;
+    transition: all .3s ease;
+    border: none;
+}
+.boton_crear_locacion button{
+    margin-top: 10px;
+    text-decoration: none;
+    padding: 13px 20px;
+    background-color: var(--color_azul);
+    color: white;
+    border-radius: 25px;
+    transition: all .3s ease;
+    border: none;
+}
+.boton_crear_locacion button:hover{
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.658);
+}
+.margin_btm{
+    margin-bottom: 10px;
+}
+.contenedor_boton_crear button:hover{
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.658);
+}
+.card_paquete{
+    border-radius: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.315);
+    transition: all .3s ease;
+}
+.card_paquete:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px var(--color_azul);
+}
+.img_paquete{
+    position: relative;
+}
+.img_paquete img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.mostrar_paquete{
+    position: absolute;
+    top: 84%;
+    left: 85%;
+    background-color: rgba(0, 0, 0, 0.404);
+    border-radius: 5px;
+}
+.mostrar_paquete a{
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+}
+.descripcion_paquete{
+    background-color: white;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.locacion_paquete{
+    padding: 15px 10px 10px;
+}
+.locacion_paquete p{
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: left;
+}
+.locacion_paquete p i{
+    color: yellow;
+}
+.filtrar_c{
+    display: flex;
+    flex-wrap: wrap;
+}
+.completo_seccion_libro{
+    padding-top: 30px;
+}
+.seccion_libro{
+    background-color: rgba(240, 248, 255, 0.795);
+    min-height: 100vh;
+}
+.completo_reserva{
+    position: relative;
+    margin-bottom: 20px;
+    max-height: 166px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+}
+.completo_seccion_reservas{
+    padding-top: 30px;
+}
+.completo_reserva .titulo_reserva a{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+.completo_reserva img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.titulo_reserva{
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiempo_estancia_paquete{
+    padding: 10px;
+}
+.tiempo_estancia_paquete p{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+}
+.precio_paquete{
+    padding: 10px;
+}
+.precio_paquete p{
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+}
+.reservar_paquete{
+    display: flex;
+    padding: 20px 10px;
+    align-items: center;
+    justify-content: center;
+}
+.reservar_paquete a{
+    text-decoration: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: var(--color_azul);
+    color: white;
+    border-radius: 50px;
+}
+.acciones_paquete{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+.acciones_paquete button{
+    font-size: 25px;
+    padding: 25px;
+    margin: 0 5px;
+    color: var(--color_azul);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+.acciones_paquete a{
+    font-size: 25px;
+    padding: 25px;
+    margin: 0 5px;
+    color: var(--color_azul);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+.acciones_paquete .eliminar{
+    color: red;
+}
+.submit_modal{
+    text-decoration: none;
+    padding: 13px 20px;
+    background-color: var(--color_azul);
+    color: white;
+    border-radius: 8px;
+    transition: all .3s ease;
+    border: none;
+}
+.submit_modal:hover{
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.658);
+}
+/*======================================================================================================*/
+/*Detalle Paquete Turistico*/
+.section_paquete_detalle{
+    position: relative;
+}
+.section_paquete_detalle img{
+    max-width: 100%;
+    height: 100%;
+}
+.all_detalle{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.397);
+}
+.caja_flex{
+    color: white;
+}
+.titulo_detalle{
+    margin-top: 20px;
+}
+.titulo_detalle a{
+    color: white;
+    font-size: 25px;
+}
+.titulo_detalle p{
+    display: inline-block;
+    font-size: 25px;
+    margin-left: 10px;
+}
+.precio_detalle p{
+    font-size: 25px;
+    margin-left: 10px;
+}
+.precio_detalle p::first-letter{
+    color: yellow;
+}
+.estancia_detalle p{
+    font-size: 20px;
+    font-weight: 600;
+}
+.hotel_detalle p{
+    font-size: 20px;
+}
+.actividades_detalle p{
+    font-size: 20px;
+}
+.reservar_detalle{
+    padding: 20px;
+}
+.reservar_detalle a{
+    text-decoration: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: var(--color_azul);
+    color: white;
+    border-radius: 50px;
+}
+.reservar_detalle a i{
+    display: inline-block;
+    margin-left: 10px;
+}
+.submit_reserva button{
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: var(--color_azul);
+    color: white;
+    border-radius: 50px;
+}
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*Seccion de Vuelos*/
+.aerolinea_vuelo{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+}
+/*////////////////////////////////////////////////////////////////////////////////////*/
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+    .completo_reserva{
+        max-height: 300px;
+    }
+    .imagen_section4{
+        height: 250px;
+        width: 250px;
+    }
+    .link_completo_row a{
+        padding: 15px 25%;
+    }
+    .imagen_vuelo_sinfondo{
+        width: 300px;
+        top: 82%;
+        left: 15%;
+    }
+    .imagen_vuelo_sinfondo img:hover{
+        transform: translate(-25px, -25px)
+                    rotate(15deg)
+                    scale(1.1)
+    }
+    .imagen_coco_playa{
+        width: 250px;
+        position: absolute;
+        top: 75%;
+        left: 55%;
+    }
+    .titulo_detalle p{
+        font-size: 35px;
+    }
+    .precio_detalle p{
+        font-size: 35px;
+    }
+    .mostrar_paquete{
+        top: 75%;
+        left: 80%;
+    }
+    .change_hgt{
+        max-height: 300px;
+    }
+    .fondo_carousel{
+        width: 50%;
+    }
+    .titulo_carousel p{
+        font-size: 24px;
+    }
+    .imagen_sinfondo{
+        position: absolute;
+        top: 175px;
+    }
+    .seccion1{
+        padding: 60px 0 200px;
+    }
+    .dentro_links{
+        left: -300%;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .completo_reserva{
+        max-height: 189px;
+    }
+    .imagen_section4{
+        height: 330px;
+        width: 330px;
+    }
+    /*Seccion Detalle de Paquete Turistico*/
+    .imagen_vuelo_sinfondo{
+        width: 400px;
+        top: 75%;
+        left: 15%;
+    }
+    .imagen_vuelo_sinfondo img:hover{
+        transform: translate(-25px, -35px)
+                    rotate(15deg)
+                    scale(1.1);
+    }
+    .section_paquete_detalle img{
+        height: auto;
+        object-fit: cover;
+    }
+    .caja_flex{
+        display: flex;
+    }
+    .titulo_detalle{
+        display: flex;
+    }
+    .titulo_detalle p{
+        width: 300px;
+        font-size: 40px;
+    }
+    .titulo_detalle a{
+        height: 70px;
+        padding: 10px 10px 20px;
+    }
+    .precio_detalle{
+        margin-top: 40px;
+    }
+    .precio_detalle p{
+        font-size: 40px;
+    }
+    .descripcion_detalle{
+        padding: 30px 20px 0 80px;
+    }
+    .mostrar_paquete{
+        top: 80%;
+        left: 85%;
+    }
+    .change_hgt{
+        max-height: 400px;
+    }
+    .titulo_carousel{
+        margin: 20px 10px 0;
+    }
+    .titulo_carousel p{
+        font-size: 28px;
+    }
+    .descripcion_carousel{
+        margin: 60px 10px;
+    }
+    .descripcion_carousel p{
+        font-size: 20px;
+    }
+    .seccion1{
+        padding: 60px 0 295px;
+    }
+    .imagen_coco_playa{
+        width: 300px;
+        top: 70%;
+        left: 55%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .completo_reserva{
+        max-height: 250px;
+    }
+    .imagen_section4{
+        height: 295px;
+        width: 295px;
+    }
+    .imagen_vuelo_sinfondo{
+        width: 500px;
+        top: 73%;
+        left: 15%;
+    }
+    .imagen_vuelo_sinfondo img:hover{
+        transform: translate(-35px, -35px)
+                    rotate(15deg)
+                    scale(1.1);
+    }
+    .seccion1{
+        padding: 60px 0 330px;
+    }
+    .titulo_seccion1 p{
+        font-size: 35px;
+    }
+    .descripcion_seccion1 p{
+        font-size: 22px;
+    }
+    .avatar{
+        height: 60px;
+        width: 60px;
+    }
+    .barra_navegacion{
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+    }
+    /*
+    .buscar_form{
+        margin: 0;
+    }
+    .buscar_form:hover input{
+        width: 65px;
+    }
+    */
+    .logout{
+        padding-top: 0;
+        margin-left: 5px;
+    }
+    .descripcion_detalle{
+        padding: 70px 20px 0 160px;
+    }
+    .titulo_detalle a{
+        font-size: 40px;
+    }
+    .change_hgt{
+        max-height: 500px;
+    }
+    .titulo_carousel{
+        margin: 50px 10px 0;
+        border-bottom: 3px solid white;
+    }
+    .titulo_carousel p{
+        text-align: center;
+        font-size: 30px;
+    }
+    .descripcion_carousel{
+        margin: 60px 30px;
+    }
+    .descripcion_carousel p{
+        font-size: 20px;
+    }
+    .titulo_seccion2 p{
+        font-size: 35px;
+    }
+    .boton_card_paquete_i{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .boton_card_paquete_i a{
+        padding: 15px 60px;
+        font-size: 20px;
+    }
+    .imagen_coco_playa{
+        width: 350px;
+        top: 70%;
+        left: 58%;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .completo_reserva{
+        max-height: 300px;
+    }
+    .imagen_section4{
+        height: 260px;
+        width: 260px;
+    }
+    .imagen_vuelo_sinfondo{
+        width: 550px;
+        top: 70%;
+        left: 9%;
+    }
+    .imagen_vuelo_sinfondo img:hover{
+        transform: translate(-35px, -35px)
+                    rotate(15deg)
+                    scale(1.1);
+    }
+    .carretera_avion{
+        left: 33%;
+    }
+    .seccion1{
+        padding: 60px 0 400px;
+    }
+    /*
+    .buscar_form:hover input{
+        width: 100px;
+    }*/
+    .listado_links{
+        margin-left: 100px;
+    }
+    .listado_links a{
+        margin: 0 10px;
+    }
+    /*
+    .buscar_form{
+        margin-left: 20px;
+    }
+    */
+    .titulo_detalle p {
+        width: 400px;
+        font-size: 50px;
+    }
+    .precio_detalle p{
+        font-size: 50px;
+    }
+    .descripcion_detalle p{
+        font-size: 25px;
+    }
+    .change_hgt{
+        max-height: 580px;
+    }
+    .titulo_carousel{
+        margin: 50px 10px 0;
+        border-bottom: 3px solid white;
+    }
+    .titulo_carousel p{
+        text-align: center;
+        font-size: 40px;
+    }
+    .descripcion_carousel{
+        margin: 80px 30px;
+    }
+    .descripcion_carousel p{
+        font-size: 24px;
+    }
+    .imagen_coco_playa{
+        width: 400px;
+        top: 66%;
+        left: 60%;
+    }
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .completo_reserva{
+        max-height: 350px;
+    }
+    .dentro_links{
+        left: -500%;
+    }
+    .imagen_section4{
+        height: 305px;
+        width: 305px;
+    }
+    .imagen_vuelo_sinfondo{
+        width: 600px;
+        top: 70%;
+        left: 9%;
+    }
+    .imagen_vuelo_sinfondo img:hover{
+        transform: translate(-35px, -35px)
+                    rotate(15deg)
+                    scale(1.1);
+    }
+    .seccion1{
+        padding: 60px 0 470px;
+    }
+    /*
+    .buscar_form:hover input{
+        width: 150px;
+    }*/
+    .listado_links{
+        margin-left: 150px;
+    }
+    .listado_links a{
+        margin: 0 20px;
+    }/*
+    .buscar_form{
+        margin-left: 20px;
+    }*/
+    .avatar{
+        margin-left: 10px;
+    }
+    .titulo_detalle p{
+        width: 495px;
+    }
+    .descripcion_detalle p{
+        font-size: 32px;
+    }
+    .titulo_detalle a{
+        font-size: 50px;
+    }
+    .mostrar_paquete{
+        top: 80%;
+    }
+    .change_hgt{
+        max-height: 650px;
+    }
+    .titulo_carousel{
+        margin: 50px 10px 0;
+        border-bottom: 3px solid white;
+    }
+    .titulo_carousel p{
+        text-align: center;
+        font-size: 50px;
+    }
+    .descripcion_carousel{
+        margin: 80px 30px;
+    }
+    .descripcion_carousel p{
+        font-size: 28px;
+    }
+    .imagen_coco_playa{
+        width: 450px;
+        top: 64%;
+        left: 63%;
+    }
+}

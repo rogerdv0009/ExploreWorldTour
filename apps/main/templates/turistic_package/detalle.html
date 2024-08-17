@@ -1,0 +1,116 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block titulo %}Paquete Turistico {{object.id}}{% endblock titulo %}
+{% block estilos %}
+<link rel="stylesheet" href="{% static 'library/sweetalert2/cdnjs/sweetalert2.min.css' %}">
+{% endblock estilos %}
+{% block contenido %}
+
+    <section class="section_paquete_detalle">
+        <img src="/media/{{ object.imagen_paquete }}" alt="">
+        <div class="all_detalle">
+            <div class="container">
+                <div class="caja_flex">
+                    <div class="titulo_detalle_vuelo">
+                        <div class="titulo_detalle">
+                            <a href="{% url 'Paquete_Listado' %}"><i class="fas fa-angle-left"></i></a>
+                            <p>{{object.locacion_turistica}}</p>
+                        </div>
+                        <div class="precio_detalle">
+                            <p><strong>$ {{object.precio}}</strong></p>
+                        </div>
+                    </div>
+                    <div class="descripcion_detalle">
+                        <div class="estancia_detalle">
+                            <p>{{object.tiempo_estancia}} días | {{object.NochesEstancias}} noches</p>
+                        </div>
+                        <div class="hotel_detalle">
+                            <p><strong>Estancia:</strong> {{object.estancia}}</p>
+                        </div>
+                        <div class="actividades_detalle">
+                            <p><strong>Actividades:</strong></p>
+                            <p>{{object.actividades}}</p>
+                        </div>
+                        <div class="reservar_detalle">
+                            <form id="formulario_reserva_paquete" action="{% url 'Paquete_Reserva' %}" method="post">
+                                {% csrf_token %}
+                                <div>
+                                    <input type="hidden" id="input_user" name="input_user" value="{{ request.user.pk }}">
+                                </div>
+                                <div>
+                                    <input type="hidden" id="input_paquete" name="input_paquete" value="{{ object.id }}">
+                                </div>
+                                <div class="submit_reserva">
+                                    <button id="boton_reserva" type="submit">Reservar <i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </section>
+{% endblock contenido %}
+
+{% block javascript %}
+<script type="application/javascript">
+    {% if reservas %}
+        let encontrarR = false;
+        {% for reserva in reservas %}
+            {% if reserva.user.pk == request.user.pk %}
+                {% if reserva.nombre_paquete.id == object.id %}
+                    encontrarR = true;
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        if (encontrarR == true) {
+            $("#boton_reserva").click(function(event){
+                event.preventDefault();
+                let texto = "El usuario ya ha realizado anteriormente una reserva del paquete turístico seleccionado";
+                Swal.fire({
+                    position: "top-end",
+                    icon: 'error',
+                    title: "Reserva Cancelada!",
+                    text: texto,
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+            });
+        }
+        else{
+            $("#boton_reserva").click(function(event){
+                event.preventDefault();
+                let texto = "El usuario acaba de realizar una reserva del paquete turístico seleccionado";
+                Swal.fire({
+                    position: "top-end",
+                    icon: 'success',
+                    title: "Reserva Realizada!",
+                    text: texto,
+                    showConfirmButton: false,
+                    timer: 2500
+                });
+                setTimeout(function() {
+                    $('#formulario_reserva_paquete').submit(); // Envía el formulario después de 1.5 segundos
+                }, 2500);
+            });
+        }
+    {% else %}
+        $("#boton_reserva").click(function(event){
+            event.preventDefault();
+            let texto = "El usuario acaba de realizar una reserva del paquete turístico seleccionado";
+            Swal.fire({
+                position: "top-end",
+                icon: 'success',
+                title: "Reserva Realizada!",
+                text: texto,
+                showConfirmButton: false,
+                timer: 2500
+            });
+            setTimeout(function() {
+                $('#formulario_reserva_paquete').submit(); // Envía el formulario después de 1.5 segundos
+            }, 2500);
+        });
+    {% endif %}
+</script>
+<script src="{% static 'library/sweetalert2/cdnjs/sweetalert2.all.min.js' %}"></script>
+{% endblock javascript %}

@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block titulo %}Reservas{% endblock titulo %}
+{% block contenido %}
+
+    <section class="section_paquete">
+        <div class="completo_seccion_reservas">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6">
+                        <div class="completo_reserva">
+                            <div class="titulo_reserva">
+                                <a href="{% url 'Reserva_Paquete_Listado' %}">Reservas de Paquetes Turísticos</a>
+                            </div>
+                            <img src="{% static 'img/second_slide.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6">
+                        <div class="completo_reserva">
+                            <div class="titulo_reserva">
+                                <a href="{% url 'Reserva_Vuelo_Listado' %}">Reservas de Vuelos</a>
+                            </div>
+                            <img src="{% static 'img/airplane2.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock contenido %}
